@@ -1,27 +1,27 @@
-from flask import Flask, render_template, request
+from quart import Quart, render_template, request
 
 # Create a flask app
-app = Flask(
+app = Quart(
   __name__,
   template_folder='templates',
   static_folder='static'
 )
 
 @app.get('/')
-def index():
-  return render_template('index.html')
+async def index():
+  return await render_template('index.html')
 
 @app.get('/about')
-def about():
-  return render_template('about.html', location=request.args.get('location'), title="About")
+async def about():
+  return await render_template('about.html', location=request.args.get('location'), title="About")
 
 @app.get('/hello')
-def hello():
-  return render_template('hello.html', name=request.args.get('name'))
+async def hello():
+  return await render_template('hello.html', name=request.args.get('name'))
 
 @app.errorhandler(404)
-def handle_404(e):
-    return render_template('status.html', status='404'), 404
+async def handle_404(e):
+    return await render_template('status.html', status='404'), 404
 
 
 if __name__ == '__main__':
