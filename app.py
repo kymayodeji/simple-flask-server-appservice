@@ -11,13 +11,17 @@ app = Flask(
 def index():
   return render_template('index.html')
 
+@app.get('/about')
+def about():
+  return render_template('about.html', location=request.args.get('location'), title="About")
+
 @app.get('/hello')
 def hello():
   return render_template('hello.html', name=request.args.get('name'))
 
 @app.errorhandler(404)
 def handle_404(e):
-    return '<h1>404</h1><p>File not found!</p><img src="https://httpcats.com/404.jpg" alt="cat in box" width=400>', 404
+    return render_template('status.html', status='404'), 404
 
 
 if __name__ == '__main__':

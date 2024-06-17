@@ -1,0 +1,20 @@
+
+{% extends "base.html" %}
+{% block content %}
+<h1>Welcome to our Simple Flask Application!</h1>
+<p>This application is built using Flask, a lightweight web framework for Python. It allows us to create web applications quickly and easily.</p>
+<p>With this application, you can:</p>
+<ul>
+    <li>Display dynamic content</li>
+    <li>Handle user input and form submissions</li>
+    <li>Implement authentication and authorization</li>
+    <li>Connect to databases and perform CRUD operations</li>
+    <li>And much more!</li>
+</ul>
+<p>Feel free to explore the different pages and features of our application. If you have any questions or need assistance, please don't hesitate to reach out to us.</p>
+{% if location %}
+<p> If you are ever in {{ location }}, I'd love to say hi!</p>
+{% else %}
+<p> If you are ever in our area, I'd love to say hi!</p>
+{% endif %}
+{% endblock %}
